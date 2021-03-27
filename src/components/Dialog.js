@@ -93,7 +93,8 @@ Dialog.propTypes = {
 Dialog.defaultProps = {
   draggable: true,
   confirmText: 'OK',
-  cancelText: 'CANCEL'
+  cancelText: 'CANCEL',
+  cancelable: true
 };
 
 export default Dialog;
