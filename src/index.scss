@@ -1,0 +1,60 @@
+
+@-webkit-keyframes dnk-enable-dialog-background {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+@keyframes dnk-enable-dialog-background {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+@-webkit-keyframes dnk-disable-dialog-background {
+  0% {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes dnk-disable-dialog-background {
+  0% {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  50% {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+html {
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+}

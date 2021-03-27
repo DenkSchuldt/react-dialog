@@ -1,0 +1,68 @@
+{
+  "name": "@DenkSchuldt/react-dialog",
+  "version": "1.0.0",
+  "private": false,
+  "description": "A simple dialog implementation for React. Enjoy!",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DenkSchuldt/react-modern-dialog.git"
+  },
+  "keywords": [
+    "React",
+    "Dialog",
+    "npm"
+  ],
+  "author": "Denny K. Schuldt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DenkSchuldt/react-modern-dialog/issues"
+  },
+  "homepage": "https://github.com/DenkSchuldt/react-modern-dialog#readme",
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-draggable": "^4.4.3",
+    "react-scripts": "3.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/preset-react": "^7.13.13",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/node-logger": "^6.1.21",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.1.21",
+    "node-sass": "^4.14.1"
+  }
+}
