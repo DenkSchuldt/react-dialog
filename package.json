@@ -1,0 +1,89 @@
+{
+  "name": "@DenkSchuldt/react-dialog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A dialog implementation for React. Enjoy it!",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DenkSchuldt/react-dialog.git"
+  },
+  "keywords": [
+    "React",
+    "Dialog",
+    "npm",
+    "DenkSchuldt",
+    "react-dialog",
+    "React dialog",
+    "Ecuador"
+  ],
+  "authors": [
+    "Denny K. Schuldt (https://github.com/DenkSchuldt)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DenkSchuldt/react-dialog/issues"
+  },
+  "homepage": "https://github.com/DenkSchuldt/react-dialog#readme",
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "prop-types": "15.7.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-draggable": "4.4.3",
+    "react-scripts": "4.0.3"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.13",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/node-logger": "^6.1.21",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.1.21",
+    "@storybook/storybook-deployer": "^2.8.7",
+    "@testing-library/react": "^11.2.5",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "node-sass": "4.14.1"
+  }
+}
