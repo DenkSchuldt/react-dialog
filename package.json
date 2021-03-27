@@ -1,7 +1,7 @@
 {
   "name": "@DenkSchuldt/react-dialog",
   "version": "1.0.0",
-  "private": false,
+  "private": true,
   "description": "A simple dialog implementation for React. Enjoy!",
   "main": "index.js",
   "repository": {
@@ -15,7 +15,9 @@
     "DenkSchuldt",
     "react-dialog"
   ],
-  "author": "Denny K. Schuldt",
+  "authors": [
+    "Denny K. Schuldt ((https://github.com/DenkSchuldt)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/DenkSchuldt/react-dialog/issues"
@@ -23,7 +25,15 @@
   "homepage": "https://github.com/DenkSchuldt/react-dialog#readme",
   "babel": {
     "presets": [
-      "@babel/preset-react"
+      "@babel/preset-react",
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
     ]
   },
   "dependencies": {
@@ -34,9 +44,9 @@
     "react-scripts": "4.0.3"
   },
   "scripts": {
+    "test": "jest",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -58,6 +68,8 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.13",
+    "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.13.13",
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-essentials": "^6.1.21",
@@ -65,6 +77,9 @@
     "@storybook/node-logger": "^6.1.21",
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.1.21",
+    "@testing-library/react": "^11.2.5",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
     "node-sass": "4.14.1"
   }
 }
