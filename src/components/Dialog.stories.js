@@ -3,11 +3,6 @@ import React from 'react';
 
 import Dialog from './Dialog';
 
-export default {
-  title: 'App/Dialog',
-  component: Dialog
-};
-
 const Child = () => <div>This is the dialog's body</div>;
 
 const Template = (args) => <Dialog {...args} />;
@@ -18,3 +13,8 @@ Normal.args = {
   cancelable: false,
   children: <Child/>
 }
+
+export default {
+  title: 'App/Dialog',
+  component: Dialog
+};

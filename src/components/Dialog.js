@@ -13,7 +13,7 @@ import icClose from './../images/ic-close.svg';
 const Dialog = (props) => {
   const {
     title, onClose, cancelable, children, onConfirm, onCancel,
-    confirmText, cancelText, className
+    confirmText, cancelText, className, draggable
   } = props;
   let dialog = useRef()
   const onCloseClick = () => {
@@ -28,10 +28,12 @@ const Dialog = (props) => {
       className={`dnk-dialog ${className || ''}`}
       onClick={cancelable ? onCloseClick : undefined}>
       <div style={{ margin: 'auto' }}>
-        <Draggable cancel='.dnk-dialog-body'>
+        <Draggable
+          disabled={!draggable}
+          cancel='.dnk-dialog-body'>
           <div className='dnk-dialog-content-wrapper'>
             <div
-              className='dnk-dialog-content'
+              className={`dnk-dialog-content ${draggable ? 'dnk-draggable' : ''}`}
               onClick={e => e.stopPropagation()}>
               <div className='dnk-dialog-content-toolbar'>
                 <img
@@ -55,14 +57,14 @@ const Dialog = (props) => {
                       onCancel &&
                       <Button
                         onClick={onCancel}
-                        text={ cancelText || 'CANCEL' }/>
+                        text={cancelText}/>
                     }
                     {
                       onConfirm &&
                       <Button
                         primary
                         onClick={onConfirm}
-                        text={ confirmText || 'OK' }/>
+                        text={confirmText}/>
                     }
                   </div>
                 }
@@ -78,6 +80,7 @@ const Dialog = (props) => {
 Dialog.propTypes = {
   title: PropTypes.string,
   cancelable: PropTypes.bool,
+  draggable: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.element,
   onClose: PropTypes.func.isRequired,
@@ -85,6 +88,12 @@ Dialog.propTypes = {
   cancelText: PropTypes.string,
   onConfirm: PropTypes.func,
   confirmText: PropTypes.string,
+};
+
+Dialog.defaultProps = {
+  draggable: true,
+  confirmText: 'OK',
+  cancelText: 'CANCEL'
 };
 
 export default Dialog;
