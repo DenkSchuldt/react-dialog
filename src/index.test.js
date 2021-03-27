@@ -24,6 +24,16 @@ test('Title is show', () => {
   expect(getByText(title)).toBeDefined();
 });
 
+test('ClassName is set', () => {
+  const className = 'my-test';
+  const { container, getByText } = render(
+    <Dialog
+      onClose={() => {}}
+      className={className}/>
+  );
+  expect(container.querySelector(`.dnk-dialog.${className}`)).toBeDefined();
+});
+
 test('Cancel is shown', () => {
   const cancelText = 'CANCEL TEST';
   const { getByText } = render(
@@ -102,4 +112,26 @@ test('Is not cancelable', () => {
   );
   expect(container.querySelector('.dnk-dialog'))
   .toHaveProperty('onclick', null);
+});
+
+test('Children are added', () => {
+  const className = 'dialog-children';
+  const { container } = render(
+    <Dialog
+      onClose={() => {}}>
+      <div className={className}>
+        test
+      </div>
+    </Dialog>
+  );
+  expect(container.querySelector(`.${className}`)).toBeDefined();
+});
+
+test('Close is clickable', () => {
+  const { container } = render(
+    <Dialog
+      onClose={() => {}}/>
+  );
+  expect(container.querySelector(`.dnk-dialog-content-toolbar img`))
+  .not.toHaveProperty('onclick', null);
 });
