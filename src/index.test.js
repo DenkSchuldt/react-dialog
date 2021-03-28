@@ -14,7 +14,7 @@ test('Renders without crashing', () => {
   );
 });
 
-test('Title is show', () => {
+test('Title is shown', () => {
   const title = 'This is a dialog';
   const { getByText } = render(
     <Dialog
@@ -22,6 +22,28 @@ test('Title is show', () => {
       onClose={() => {}}/>
   );
   expect(getByText(title)).toBeDefined();
+});
+
+test('Width is set', () => {
+  const { container } = render(
+    <Dialog
+      width={100}
+      height={200}
+      onClose={() => {}}/>
+  );
+  expect(container.querySelector(`.dnk-dialog-content`))
+  .toHaveProperty(['style', 'width'], '100px');
+});
+
+test('Height is set', () => {
+  const { container } = render(
+    <Dialog
+      width={100}
+      height={200}
+      onClose={() => {}}/>
+  );
+  expect(container.querySelector(`.dnk-dialog-content`))
+  .toHaveProperty(['style', 'height'], '200px');
 });
 
 test('ClassName is set', () => {
@@ -132,6 +154,6 @@ test('Close is clickable', () => {
     <Dialog
       onClose={() => {}}/>
   );
-  expect(container.querySelector(`.dnk-dialog-content-toolbar img`))
+  expect(container.querySelector(`.dnk-dialog-close`))
   .not.toHaveProperty('onclick', null);
 });

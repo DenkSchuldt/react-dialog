@@ -12,8 +12,9 @@ import icClose from './../images/ic-close.svg';
 
 const Dialog = (props) => {
   const {
-    title, onClose, cancelable, children, onConfirm, onCancel,
-    confirmText, cancelText, className, draggable
+    width, height, title, onClose, cancelable, children, onConfirm, onCancel,
+    confirmText, cancelText, className, draggable, cancelDisabled,
+    confirmDisabled
   } = props;
   let dialog = useRef()
   const onCloseClick = () => {
@@ -29,19 +30,39 @@ const Dialog = (props) => {
       onClick={cancelable ? onCloseClick : undefined}>
       <div style={{ margin: 'auto' }}>
         <Draggable
-          disabled={!draggable}
-          cancel='.dnk-dialog-body'>
+          disabled={!draggable}>
           <div className='dnk-dialog-content-wrapper'>
             <div
+              style={{
+                ...(
+                  width ?
+                  {
+                    width: `${width}px`,
+                    minWidth: `${width}px`,
+                    maxWidth: `${width}px`
+                  } :
+                  undefined
+                ),
+                ...(
+                  height ?
+                  {
+                    height: `${height}px`,
+                    minHeight: `${height}px`,
+                    maxHeight: `${height}px`
+                  } :
+                  undefined
+                )
+              }}
               className={`dnk-dialog-content ${draggable ? 'dnk-draggable' : ''}`}
               onClick={e => e.stopPropagation()}>
-              <div className='dnk-dialog-content-toolbar'>
+              <button
+                type='button'
+                onClick={onCloseClick}
+                className='dnk-dialog-close'>
                 <img
-                  onClick={onCloseClick}
-                  className='dnk-pointer'
                   src={icClose}
                   alt=''/>
-              </div>
+              </button>
               {
                 title &&
                 <header className='dnk-dialog-header'>
@@ -57,14 +78,16 @@ const Dialog = (props) => {
                       onCancel &&
                       <Button
                         onClick={onCancel}
-                        text={cancelText}/>
+                        text={cancelText}
+                        disabled={cancelDisabled}/>
                     }
                     {
                       onConfirm &&
                       <Button
                         primary
                         onClick={onConfirm}
-                        text={confirmText}/>
+                        text={confirmText}
+                        disabled={confirmDisabled}/>
                     }
                   </div>
                 }
@@ -78,6 +101,8 @@ const Dialog = (props) => {
 }
 
 Dialog.propTypes = {
+  with: PropTypes.number,
+  height: PropTypes.number,
   title: PropTypes.string,
   cancelable: PropTypes.bool,
   draggable: PropTypes.bool,
@@ -92,9 +117,11 @@ Dialog.propTypes = {
 
 Dialog.defaultProps = {
   draggable: true,
-  confirmText: 'OK',
+  cancelable: true,
   cancelText: 'CANCEL',
-  cancelable: true
+  cancelDisabled: false,
+  confirmText: 'OK',
+  confirmDisabled: false
 };
 
 export default Dialog;
