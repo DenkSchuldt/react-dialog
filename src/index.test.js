@@ -56,7 +56,7 @@ test('ClassName is set', () => {
   expect(container.querySelector(`.dnk-dialog.${className}`)).toBeDefined();
 });
 
-test('Cancel is shown', () => {
+test('Cancel button is shown', () => {
   const cancelText = 'CANCEL TEST';
   const { getByText } = render(
     <Dialog
@@ -67,7 +67,7 @@ test('Cancel is shown', () => {
   expect(getByText(cancelText)).toBeDefined();
 });
 
-test('Cancel is clickable', () => {
+test('Cancel button is clickable', () => {
   const cancelText = 'CANCEL TEST';
   const { getByText } = render(
     <Dialog
@@ -78,7 +78,7 @@ test('Cancel is clickable', () => {
   expect(getByText(cancelText)).not.toHaveProperty('onclick', null);
 });
 
-test('Cancel is disabled', () => {
+test('Cancel button is disabled', () => {
   const cancelText = 'CANCEL TEST';
   const { getByText } = render(
     <Dialog
@@ -90,7 +90,7 @@ test('Cancel is disabled', () => {
   expect(getByText(cancelText)).toHaveProperty('disabled', true);
 });
 
-test('Cancel is enabled', () => {
+test('Cancel button is enabled', () => {
   const cancelText = 'CANCEL TEST';
   const { getByText } = render(
     <Dialog
@@ -101,7 +101,7 @@ test('Cancel is enabled', () => {
   expect(getByText(cancelText)).toHaveProperty('disabled', false);
 });
 
-test('Confirm is shown', () => {
+test('Confirm button is shown', () => {
   const confirmText = 'CONFIRM TEST';
   const { getByText } = render(
     <Dialog
@@ -112,7 +112,7 @@ test('Confirm is shown', () => {
   expect(getByText(confirmText)).toBeDefined();
 });
 
-test('Confirm is clickable', () => {
+test('Confirm button is clickable', () => {
   const confirmText = 'CONFIRM TEST';
   const { getByText } = render(
     <Dialog
@@ -123,7 +123,7 @@ test('Confirm is clickable', () => {
   expect(getByText(confirmText)).not.toHaveProperty('onclick', null);
 });
 
-test('Confirm is disabled', () => {
+test('Confirm button is disabled', () => {
   const confirmText = 'CONFIRM TEST';
   const { getByText } = render(
     <Dialog
@@ -135,7 +135,7 @@ test('Confirm is disabled', () => {
   expect(getByText(confirmText)).toHaveProperty('disabled', true);
 });
 
-test('Confirm is enabled', () => {
+test('Confirm button is enabled', () => {
   const confirmText = 'CONFIRM TEST';
   const { getByText } = render(
     <Dialog
@@ -195,13 +195,30 @@ test('Children are added', () => {
   expect(container.querySelector(`.${className}`)).toBeDefined();
 });
 
-test('Close is clickable', () => {
+test('Close button is clickable', () => {
   const { container } = render(
     <Dialog
       onCloseClick={() => {}}/>
   );
   expect(container.querySelector(`.dnk-dialog-close`))
   .not.toHaveProperty('onclick', null);
+});
+
+test('Close button is shown', () => {
+  const { container } = render(
+    <Dialog
+      onCloseClick={() => {}}/>
+  );
+  expect(container.querySelector(`.dnk-dialog-close`)).toBeDefined();
+});
+
+test('Close button is hidden', () => {
+  const { container } = render(
+    <Dialog
+      hideCloseButton={true}
+      onCloseClick={() => {}}/>
+  );
+  expect(container.querySelector(`.dnk-dialog-close`)).toBe(null);
 });
 
 test('Slides in', () => {

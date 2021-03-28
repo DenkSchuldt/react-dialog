@@ -14,7 +14,7 @@ const Dialog = (props) => {
   const {
     width, height, title, onCloseClick, cancelableOutside, children,
     onConfirmClick, onCancelClick, confirmText, cancelText, className,
-    draggable, cancelDisabled, confirmDisabled, slideIn
+    draggable, cancelDisabled, confirmDisabled, slideIn, hideCloseButton
   } = props;
   let dialog = useRef()
   const handleCloseClick = () => {
@@ -61,14 +61,17 @@ const Dialog = (props) => {
               }}
               className={`dnk-dialog-content ${draggable ? 'dnk-draggable' : ''}`}
               onClick={e => e.stopPropagation()}>
-              <button
-                type='button'
-                onClick={handleCloseClick}
-                className='dnk-dialog-close'>
-                <img
-                  src={icClose}
-                  alt=''/>
-              </button>
+              {
+                !hideCloseButton &&
+                <button
+                  type='button'
+                  onClick={handleCloseClick}
+                  className='dnk-dialog-close'>
+                  <img
+                    src={icClose}
+                    alt=''/>
+                </button>
+              }
               {
                 title &&
                 <header className='dnk-dialog-header'>
@@ -121,6 +124,7 @@ Dialog.propTypes = {
   onCloseClick: PropTypes.func.isRequired,
   cancelDisabled: PropTypes.bool,
   confirmDisabled: PropTypes.bool,
+  hideCloseButton: PropTypes.bool,
   slideIn: PropTypes.oneOf(['top', 'bottom', 'left', 'right'])
 };
 
@@ -130,7 +134,8 @@ Dialog.defaultProps = {
   cancelDisabled: false,
   confirmText: 'OK',
   confirmDisabled: false,
-  cancelableOutside: true
+  cancelableOutside: true,
+  hideCloseButton: false
 };
 
 export default Dialog;
