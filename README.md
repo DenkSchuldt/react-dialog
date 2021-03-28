@@ -1,7 +1,7 @@
 
 # @DenkSchuldt/react-dialog
 
-> A simple and modern dialog implementation for react.
+> A dialog implementation for react. Enjoy it!
 
 ## Installation
 ```bash
@@ -14,7 +14,11 @@ $ npm install --save @DenkSchuldt/react-dialog
 
 ## Basic usage
 
-See DEMO at [@DenkSchuldt/react-dialog](https://dennyschuldt.com/react/react-dialog)
+See full DEMO at [@DenkSchuldt/react-dialog](https://dennyschuldt.com/react/react-dialog)
+
+<img
+  src="./@DenkSchuldt react-dialog.gif"
+  alt="Preview"/>
 
 ```javascript
 import ReactDOM from 'react-dom';

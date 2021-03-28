@@ -110,7 +110,7 @@ const Dialog = (props) => {
 }
 
 Dialog.propTypes = {
-  with: PropTypes.number,
+  width: PropTypes.number,
   height: PropTypes.number,
   title: PropTypes.string,
   draggable: PropTypes.bool,
