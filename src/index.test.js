@@ -78,6 +78,29 @@ test('Cancel is clickable', () => {
   expect(getByText(cancelText)).not.toHaveProperty('onclick', null);
 });
 
+test('Cancel is disabled', () => {
+  const cancelText = 'CANCEL TEST';
+  const { getByText } = render(
+    <Dialog
+      onCloseClick={() => {}}
+      onCancelClick={() => {}}
+      cancelText={cancelText}
+      cancelDisabled={true}/>
+  );
+  expect(getByText(cancelText)).toHaveProperty('disabled', true);
+});
+
+test('Cancel is enabled', () => {
+  const cancelText = 'CANCEL TEST';
+  const { getByText } = render(
+    <Dialog
+      onCloseClick={() => {}}
+      onCancelClick={() => {}}
+      cancelText={cancelText}/>
+  );
+  expect(getByText(cancelText)).toHaveProperty('disabled', false);
+});
+
 test('Confirm is shown', () => {
   const confirmText = 'CONFIRM TEST';
   const { getByText } = render(
@@ -98,6 +121,29 @@ test('Confirm is clickable', () => {
       confirmText={confirmText}/>
   );
   expect(getByText(confirmText)).not.toHaveProperty('onclick', null);
+});
+
+test('Confirm is disabled', () => {
+  const confirmText = 'CONFIRM TEST';
+  const { getByText } = render(
+    <Dialog
+      onCloseClick={() => {}}
+      onConfirmClick={() => {}}
+      confirmText={confirmText}
+      confirmDisabled={true}/>
+  );
+  expect(getByText(confirmText)).toHaveProperty('disabled', true);
+});
+
+test('Confirm is enabled', () => {
+  const confirmText = 'CONFIRM TEST';
+  const { getByText } = render(
+    <Dialog
+      onCloseClick={() => {}}
+      onConfirmClick={() => {}}
+      confirmText={confirmText}/>
+  );
+  expect(getByText(confirmText)).toHaveProperty('disabled', false);
 });
 
 test('Draggable is enabled', () => {

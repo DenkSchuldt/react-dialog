@@ -118,8 +118,9 @@ Dialog.propTypes = {
   onConfirmClick: PropTypes.func,
   confirmText: PropTypes.string,
   cancelableOutside: PropTypes.bool,
-  onBackgroundClick: PropTypes.func,
   onCloseClick: PropTypes.func.isRequired,
+  cancelDisabled: PropTypes.bool,
+  confirmDisabled: PropTypes.bool,
   slideIn: PropTypes.oneOf(['top', 'bottom', 'left', 'right'])
 };
 
