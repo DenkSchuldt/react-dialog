@@ -1,4 +1,76 @@
 
+@-webkit-keyframes slide-in-from-top {
+  0% {
+    transform: translate(0px, -100vh);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes slide-in-from-top {
+  0% {
+    transform: translate(0px, -100vh);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@-webkit-keyframes slide-in-from-bottom {
+  0% {
+    transform: translate(0px, 100vh);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes slide-in-from-bottom {
+  0% {
+    transform: translate(0px, 100vh);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@-webkit-keyframes slide-in-from-left {
+  0% {
+    transform: translate(-100vw, 0px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes slide-in-from-left {
+  0% {
+    transform: translate(-100vw, 0px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@-webkit-keyframes slide-in-from-right {
+  0% {
+    transform: translate(100vw, 0px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes slide-in-from-right {
+  0% {
+    transform: translate(100vw, 0px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
 @-webkit-keyframes dnk-enable-dialog-background {
   0% {
     background-color: rgba(0, 0, 0, 0);

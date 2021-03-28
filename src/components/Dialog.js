@@ -14,7 +14,7 @@ const Dialog = (props) => {
   const {
     width, height, title, onCloseClick, cancelableOutside, children,
     onConfirmClick, onCancelClick, confirmText, cancelText, className,
-    draggable, cancelDisabled, confirmDisabled
+    draggable, cancelDisabled, confirmDisabled, slideIn
   } = props;
   let dialog = useRef()
   const handleCloseClick = () => {
@@ -31,7 +31,13 @@ const Dialog = (props) => {
       <div style={{ margin: 'auto' }}>
         <Draggable
           disabled={!draggable}>
-          <div className='dnk-dialog-content-wrapper'>
+          <div
+            style={
+              ['top', 'bottom', 'left', 'right'].includes(slideIn) ?
+              { animationName: `slide-in-from-${slideIn}` } :
+              undefined
+            }
+            className='dnk-dialog-content-wrapper'>
             <div
               style={{
                 ...(
@@ -113,7 +119,8 @@ Dialog.propTypes = {
   confirmText: PropTypes.string,
   cancelableOutside: PropTypes.bool,
   onBackgroundClick: PropTypes.func,
-  onCloseClick: PropTypes.func.isRequired
+  onCloseClick: PropTypes.func.isRequired,
+  slideIn: PropTypes.oneOf(['top', 'bottom', 'left', 'right'])
 };
 
 Dialog.defaultProps = {

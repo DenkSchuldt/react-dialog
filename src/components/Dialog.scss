@@ -11,6 +11,8 @@
   .dnk-dialog-content-wrapper {
     margin: auto;
     padding: 40px;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
     .dnk-dialog-content {
       display: flex;
       min-width: 320px;

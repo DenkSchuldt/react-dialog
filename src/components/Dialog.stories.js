@@ -10,7 +10,6 @@ const Template = (args) => <Dialog {...args} />;
 export const Normal = Template.bind({});
 Normal.args = {
   title: 'Dialog title',
-  cancelable: false,
   children: <Child/>
 }
 

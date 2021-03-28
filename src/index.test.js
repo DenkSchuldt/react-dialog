@@ -157,3 +157,13 @@ test('Close is clickable', () => {
   expect(container.querySelector(`.dnk-dialog-close`))
   .not.toHaveProperty('onclick', null);
 });
+
+test('Slides in', () => {
+  const { container } = render(
+    <Dialog
+      slideIn='top'
+      onCloseClick={() => {}}/>
+  );
+  expect(container.querySelector(`.dnk-dialog-content-wrapper`))
+  .toHaveProperty(['style', 'animationName'], 'slide-in-from-top');
+});
