@@ -14,7 +14,7 @@ $ npm install --save @DenkSchuldt/react-dialog
 
 ## Basic usage
 
-See full DEMO at [@DenkSchuldt/react-dialog](https://dennyschuldt.com/react/react-dialog)
+See full DEMO at [@DenkSchuldt/react-dialog](https://dennyschuldt.com/react-dialog)
 
 <img
   src="./@DenkSchuldt react-dialog.gif"
