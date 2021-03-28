@@ -12,22 +12,22 @@ import icClose from './../images/ic-close.svg';
 
 const Dialog = (props) => {
   const {
-    width, height, title, onClose, cancelable, children, onConfirm, onCancel,
-    confirmText, cancelText, className, draggable, cancelDisabled,
-    confirmDisabled
+    width, height, title, onCloseClick, cancelableOutside, children,
+    onConfirmClick, onCancelClick, confirmText, cancelText, className,
+    draggable, cancelDisabled, confirmDisabled
   } = props;
   let dialog = useRef()
-  const onCloseClick = () => {
+  const handleCloseClick = () => {
     dialog.current.classList.add('dnk-dialog-hide-background');
     setTimeout(() => {
-      onClose();
+      onCloseClick();
     }, 90);
   };
   return (
     <div
       ref={dialog}
       className={`dnk-dialog ${className || ''}`}
-      onClick={cancelable ? onCloseClick : undefined}>
+      onClick={cancelableOutside ? handleCloseClick : undefined}>
       <div style={{ margin: 'auto' }}>
         <Draggable
           disabled={!draggable}>
@@ -57,7 +57,7 @@ const Dialog = (props) => {
               onClick={e => e.stopPropagation()}>
               <button
                 type='button'
-                onClick={onCloseClick}
+                onClick={handleCloseClick}
                 className='dnk-dialog-close'>
                 <img
                   src={icClose}
@@ -72,21 +72,21 @@ const Dialog = (props) => {
               <div className='dnk-dialog-body'>
                 { children }
                 {
-                  (onConfirm || onCancel) &&
+                  (onConfirmClick || onCancelClick) &&
                   <div className='dnk-dialog-body-buttons'>
                     {
-                      onCancel &&
+                      onCancelClick &&
                       <Button
-                        onClick={onCancel}
                         text={cancelText}
+                        onClick={onCancelClick}
                         disabled={cancelDisabled}/>
                     }
                     {
-                      onConfirm &&
+                      onConfirmClick &&
                       <Button
                         primary
-                        onClick={onConfirm}
                         text={confirmText}
+                        onClick={onConfirmClick}
                         disabled={confirmDisabled}/>
                     }
                   </div>
@@ -104,24 +104,25 @@ Dialog.propTypes = {
   with: PropTypes.number,
   height: PropTypes.number,
   title: PropTypes.string,
-  cancelable: PropTypes.bool,
   draggable: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.element,
-  onClose: PropTypes.func.isRequired,
-  onCancel: PropTypes.func,
+  onCancelClick: PropTypes.func,
   cancelText: PropTypes.string,
-  onConfirm: PropTypes.func,
+  onConfirmClick: PropTypes.func,
   confirmText: PropTypes.string,
+  cancelableOutside: PropTypes.bool,
+  onBackgroundClick: PropTypes.func,
+  onCloseClick: PropTypes.func.isRequired
 };
 
 Dialog.defaultProps = {
   draggable: true,
-  cancelable: true,
   cancelText: 'CANCEL',
   cancelDisabled: false,
   confirmText: 'OK',
-  confirmDisabled: false
+  confirmDisabled: false,
+  cancelableOutside: true
 };
 
 export default Dialog;
