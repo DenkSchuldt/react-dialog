@@ -1,7 +1,7 @@
 {
   "name": "@DenkSchuldt/react-dialog",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "description": "A dialog implementation for React.",
   "main": "dist/index.js",
   "files": [
