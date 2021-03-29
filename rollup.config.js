@@ -1,6 +1,4 @@
 
-//"build": "set NODE_ENV=production && rm -rf dist && mkdir dist && npx babel src/ --out-dir dist --copy-files",
-
 import url from '@rollup/plugin-url';
 import sass from 'rollup-plugin-sass';
 import babel from '@rollup/plugin-babel';
