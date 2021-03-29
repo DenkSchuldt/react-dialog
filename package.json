@@ -1,5 +1,5 @@
 {
-  "name": "@DenkSchuldt/react-dialog",
+  "name": "@denkschuldt/react-dialog",
   "version": "1.0.0",
   "private": false,
   "description": "A dialog implementation for React.",
