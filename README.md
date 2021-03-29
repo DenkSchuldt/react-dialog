@@ -1,7 +1,7 @@
 
 # @DenkSchuldt/react-dialog
 
-> A dialog implementation for react. Enjoy it!
+> A dialog implementation for react.
 
 ## Installation
 ```bash
@@ -23,13 +23,18 @@ See full DEMO at [@DenkSchuldt/react-dialog](https://dennyschuldt.com/react-dial
 ```javascript
 import ReactDOM from 'react-dom';
 import React, { useState } from 'react';
-import { Dialog } from '@DenkSchuldt/react-dialog';
+import Dialog from '@denkschuldt/react-dialog';
 
 const App = () => {
-  const [ isVisible, setIsVisible ] = useState(true);
+  const [ isVisible, setIsVisible ] = useState(false);
   render() {
     return (
       <div>
+        <button
+          type='button'
+          onClick={() => setIsVisible(true)}>
+          Show dialog
+        <button>
         {
           isVisible &&
           <Dialog
@@ -69,8 +74,12 @@ ReactDOM.render(<App/>, document.body);
 | onConfirmClick    | function |                    | Positive button click function                        |         |
 | confirmDisabled   | Boolean  |                    | Positive button disabled prop                         | false   |
 
-
+## Contributing
+* Fork the project
+* Make changes and include tests
+* Update README, CHANGELOG with detailed info
+* Send me a PR :bowtie:
 
 ## License
 
-MIT © [DenkSchuldt](https://github.com/DenkSchuldt)
+MIT
