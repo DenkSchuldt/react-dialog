@@ -2,8 +2,11 @@
   "name": "@DenkSchuldt/react-dialog",
   "version": "1.0.0",
   "private": true,
-  "description": "A dialog implementation for React. Enjoy it!",
-  "main": "index.js",
+  "description": "A dialog implementation for React.",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DenkSchuldt/react-dialog.git"
@@ -11,11 +14,11 @@
   "keywords": [
     "React",
     "Dialog",
-    "npm",
-    "DenkSchuldt",
+    "Modal",
     "react-dialog",
+    "react-modal",
     "React dialog",
-    "Ecuador"
+    "React modal"
   ],
   "authors": [
     "Denny K. Schuldt (https://github.com/DenkSchuldt)"
@@ -43,13 +46,17 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-draggable": "4.4.3",
-    "react-scripts": "4.0.3"
+    "react-scripts": "^4.0.3"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "scripts": {
     "test": "jest",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
     "eject": "react-scripts eject",
+    "start": "react-scripts start",
+    "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages"
@@ -74,6 +81,10 @@
     "@babel/core": "^7.13.13",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.13.13",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^18.0.0",
+    "@rollup/plugin-node-resolve": "^11.2.1",
+    "@rollup/plugin-url": "^6.0.0",
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
@@ -82,8 +93,13 @@
     "@storybook/react": "^6.1.21",
     "@storybook/storybook-deployer": "^2.8.7",
     "@testing-library/react": "^11.2.5",
+    "babel-core": "^6.26.3",
     "babel-jest": "^26.6.3",
-    "jest": "^26.6.3",
-    "node-sass": "4.14.1"
+    "babel-runtime": "^6.26.0",
+    "jest": "^26.6.0",
+    "node-sass": "4.14.1",
+    "rollup": "^2.43.1",
+    "rollup-plugin-sass": "^1.2.2",
+    "rollup-plugin-svg-import": "^1.5.1"
   }
 }

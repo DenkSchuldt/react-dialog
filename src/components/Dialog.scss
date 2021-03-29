@@ -61,8 +61,10 @@
         font-size: 20px;
         font-weight: bold;
         padding-top: 14px;
+        user-select: none;
         padding-left: 14px;
         padding-right: 34px;
+        text-align: left;
       }
       .dnk-dialog-body {
         height: 100%;

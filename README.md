@@ -23,7 +23,7 @@ See full DEMO at [@DenkSchuldt/react-dialog](https://dennyschuldt.com/react-dial
 ```javascript
 import ReactDOM from 'react-dom';
 import React, { useState } from 'react';
-import { Dialog } from '@DenkSchuldt/react-dialog';
+import Dialog from '@DenkSchuldt/react-dialog';
 
 const App = () => {
   const [ isVisible, setIsVisible ] = useState(true);
@@ -73,4 +73,4 @@ ReactDOM.render(<App/>, document.body);
 
 ## License
 
-MIT © [DenkSchuldt](https://github.com/DenkSchuldt)
+MIT
