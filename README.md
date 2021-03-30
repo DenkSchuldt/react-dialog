@@ -1,12 +1,12 @@
 
-# @DenkSchuldt/react-dialog
+# @denkschuldt/react-dialog
 
 > A dialog implementation for react.
 
 ## Installation
 ```bash
 # NPM
-$ npm install --save @DenkSchuldt/react-dialog
+$ npm install --save @denkschuldt/react-dialog
 ```
 |Version     | Compatibility|
 |------------|--------------|
