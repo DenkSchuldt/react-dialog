@@ -65,6 +65,7 @@ ReactDOM.render(<App/>, document.body);
 | className         | String   |                    | Component class to override styles                    |         |
 | slideIn           | String   |                    | Initial animation: top, bottom, left, right           |         |
 | cancelableOutside | Boolean  |                    | Whether the dialogs closes by clicking outside or not | false   |
+| closeOnEscPress   | Boolean  |                    | Whether the dialogs closes by pressing escape         | false   |
 | hideCloseButton   | Boolean  |                    | Hides the close button                                | false   |
 | onCloseClick      | function | :white_check_mark: | Close button click function                           |         |
 | cancelText        | String   |                    | Negative button text                                  | 'CANCEL'|

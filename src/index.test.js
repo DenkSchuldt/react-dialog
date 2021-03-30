@@ -1,6 +1,11 @@
 
 import React from 'react';
-import { cleanup, render } from '@testing-library/react';
+import {
+  render,
+  cleanup,
+  fireEvent,
+  waitForElementToBeRemoved
+} from '@testing-library/react';
 
 import Dialog from './components/Dialog';
 
@@ -219,6 +224,35 @@ test('Close button is hidden', () => {
       onCloseClick={() => {}}/>
   );
   expect(container.querySelector(`.dnk-dialog-close`)).toBe(null);
+});
+
+test('Closes on escape press if activated', () => {
+  const { container, unmount } = render(
+    <Dialog
+      closeOnEscPress={true}
+      onCloseClick={() => unmount()}/>
+  );
+  fireEvent.keyDown(container, {
+    key: "Escape",
+    code: "Escape",
+    keyCode: 27,
+    charCode: 27
+  });
+  expect(container.innerHTML).toBe('');
+});
+
+test('Doesn\'t close on escape press if not activated', () => {
+  const { container, unmount } = render(
+    <Dialog
+      onCloseClick={() => unmount()}/>
+  );
+  fireEvent.keyDown(container, {
+    key: "Escape",
+    code: "Escape",
+    keyCode: 27,
+    charCode: 27
+  });
+  expect(container.innerHTML).not.toBe('');
 });
 
 test('Slides in', () => {

@@ -1,7 +1,7 @@
 
 import PropTypes from 'prop-types';
-import React, { useRef } from 'react';
 import Draggable from 'react-draggable';
+import React, { useRef, useEffect } from 'react';
 
 import Button from './Button';
 
@@ -14,15 +14,37 @@ const Dialog = (props) => {
   const {
     width, height, title, onCloseClick, cancelableOutside, children,
     onConfirmClick, onCancelClick, confirmText, cancelText, className,
-    draggable, cancelDisabled, confirmDisabled, slideIn, hideCloseButton
+    draggable, cancelDisabled, confirmDisabled, slideIn, hideCloseButton,
+    closeOnEscPress
   } = props;
-  let dialog = useRef()
+  const dialog = useRef();
   const handleCloseClick = () => {
     dialog.current.classList.add('dnk-dialog-hide-background');
     setTimeout(() => {
       onCloseClick();
     }, 90);
   };
+  const handleCloseOnEscPress = (e) => {
+    if(e.keyCode === 27) {
+      onCloseClick();
+    }
+  }
+  useEffect(() => {
+    if (closeOnEscPress) {
+      document.addEventListener(
+        "keydown",
+        handleCloseOnEscPress,
+        false
+      );
+      return () => {
+        document.removeEventListener(
+          "keydown",
+          handleCloseOnEscPress,
+          false
+        );
+      }
+    }
+  }, []);
   return (
     <div
       ref={dialog}
@@ -125,6 +147,7 @@ Dialog.propTypes = {
   cancelDisabled: PropTypes.bool,
   confirmDisabled: PropTypes.bool,
   hideCloseButton: PropTypes.bool,
+  closeOnEscPress: PropTypes.bool,
   slideIn: PropTypes.oneOf(['top', 'bottom', 'left', 'right'])
 };
 
@@ -135,7 +158,8 @@ Dialog.defaultProps = {
   confirmText: 'OK',
   confirmDisabled: false,
   cancelableOutside: true,
-  hideCloseButton: false
+  hideCloseButton: false,
+  closeOnEscPress: false
 };
 
 export default Dialog;
