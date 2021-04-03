@@ -27,27 +27,25 @@ import Dialog from '@denkschuldt/react-dialog';
 
 const App = () => {
   const [ isVisible, setIsVisible ] = useState(false);
-  render() {
-    return (
-      <div>
-        <button
-          type='button'
-          onClick={() => setIsVisible(true)}>
-          Show dialog
-        <button>
-        {
-          isVisible &&
-          <Dialog
-            title='This is the dialog title'
-            onCloseClick={() => setIsVisible(false)}>
-            <span>
-              This is the dialog body.
-            </span>
-          </Dialog>
-        }
-      </div>
-    );
-  }
+  return (
+    <div>
+      <button
+        type='button'
+        onClick={() => setIsVisible(true)}>
+        Show dialog
+      </button>
+      {
+        isVisible &&
+        <Dialog
+          title='This is the dialog title'
+          onCloseClick={() => setIsVisible(false)}>
+          <span>
+            This is the dialog body.
+          </span>
+        </Dialog>
+      }
+    </div>
+  );
 }
 
 ReactDOM.render(<App/>, document.body);
@@ -75,11 +73,13 @@ ReactDOM.render(<App/>, document.body);
 | onConfirmClick    | function |                    | Positive button click function                        |         |
 | confirmDisabled   | Boolean  |                    | Positive button disabled prop                         | false   |
 
+
 ## Contributing
 * Fork the project
 * Make changes and include tests
 * Update README, CHANGELOG with detailed info
 * Send me a PR :bowtie:
+
 
 ## License
 
