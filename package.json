@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/DenkSchuldt/react-dialog/issues"
   },
-  "homepage": "https://github.com/DenkSchuldt/react-dialog#readme",
+  "homepage": "https://github.com/DenkSchuldt/react-dialog",
   "babel": {
     "presets": [
       "@babel/preset-react",
@@ -51,8 +51,7 @@
   },
   "scripts": {
     "test": "jest",
-    "eject": "react-scripts eject",
-    "start": "react-scripts start",
+    "start": "rollup -c -w",
     "build": "rollup -c",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
@@ -97,7 +96,6 @@
     "node-sass": "4.14.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-scripts": "^4.0.3",
     "rollup": "^2.43.1",
     "rollup-plugin-sass": "^1.2.2"
   }

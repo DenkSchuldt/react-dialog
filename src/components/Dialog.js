@@ -26,7 +26,7 @@ const Dialog = (props) => {
   };
   const handleCloseOnEscPress = (e) => {
     if(e.keyCode === 27) {
-      onCloseClick();
+      handleCloseClick();
     }
   }
   useEffect(() => {

@@ -1,6 +1,9 @@
 
+.env
 dist/
+public/
 .DS_Store
+.storybook/
 node_modules/
 package-lock.json
 .deploy-steps.md
