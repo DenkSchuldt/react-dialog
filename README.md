@@ -1,7 +1,7 @@
 
 # @denkschuldt/react-dialog
 
-> A dialog implementation for react.
+> A simple to use and customizable react dialog implementation.
 
 ## Installation
 ```bash
@@ -14,10 +14,8 @@ $ npm install --save @denkschuldt/react-dialog
 
 ## Basic usage
 
-See full DEMO at [@DenkSchuldt/react-dialog](https://dennyschuldt.com/react-dialog)
-
 <img
-  src="./@DenkSchuldt react-dialog.gif"
+  src="./demo.gif"
   alt="Preview"/>
 
 ```javascript
@@ -37,10 +35,12 @@ const App = () => {
       {
         isVisible &&
         <Dialog
-          title='This is the dialog title'
+          title='Dialog'
+          onCancelClick={() => {}}
+          onConfirmClick={() => {}}
           onCloseClick={() => setIsVisible(false)}>
           <span>
-            This is the dialog body.
+            This is the body
           </span>
         </Dialog>
       }
@@ -48,11 +48,12 @@ const App = () => {
   );
 }
 
-ReactDOM.render(<App/>, document.body);
+ReactDOM.render(<App/>, document.getElementById('root'));
 
 ```
+See more examples at [@DenkSchuldt/react-dialog](https://denkschuldt.github.io/react-dialog)
 
-## Properties
+## Props
 
 | Name              | Type     | Required           | Description                                           | Default |
 |-------------------|----------|--------------------|-------------------------------------------------------|---------|
@@ -73,6 +74,30 @@ ReactDOM.render(<App/>, document.body);
 | onConfirmClick    | function |                    | Positive button click function                        |         |
 | confirmDisabled   | Boolean  |                    | Positive button disabled prop                         | false   |
 
+
+## Styling
+Use the className prop to override dialogs classes:
+```scss
+.your-css-class {
+  .dnk-dialog-content {
+    /* The dialog card */
+    .dnk-dialog-close {
+      /* The close button */
+    }
+    .dnk-dialog-body {
+      .dnk-dialog-body-buttons {
+        /* The buttons div container */
+        button {
+          /* cancel button */
+          &.dnk-btn-primary {
+            /* confirm button */
+          }
+        }
+      }
+    }
+  }
+}
+```
 
 ## Contributing
 * Fork the project

@@ -88,6 +88,7 @@ const Dialog = (props) => {
                 <button
                   type='button'
                   onClick={handleCloseClick}
+                  style={{ cursor: 'pointer' }}
                   className='dnk-dialog-close'>
                   <img
                     src={icClose}
