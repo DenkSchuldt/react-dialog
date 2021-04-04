@@ -75,6 +75,30 @@ See more examples at [@DenkSchuldt/react-dialog](https://denkschuldt.github.io/r
 | confirmDisabled   | Boolean  |                    | Positive button disabled prop                         | false   |
 
 
+## Styling
+Use the className prop to override dialogs classes:
+```scss
+.your-css-class {
+  .dnk-dialog-content {
+    /* The dialog card */
+    .dnk-dialog-close {
+      /* The close button */
+    }
+    .dnk-dialog-body {
+      .dnk-dialog-body-buttons {
+        /* The buttons div container */
+        button {
+          /* cancel button */
+          &.dnk-btn-primary {
+            /* confirm button */
+          }
+        }
+      }
+    }
+  }
+}
+```
+
 ## Contributing
 * Fork the project
 * Make changes and include tests
