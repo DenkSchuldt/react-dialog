@@ -1,7 +1,7 @@
 
 # @denkschuldt/react-dialog
 
-> A dialog implementation for react.
+> A simple to use and customizable react dialog implementation.
 
 ## Installation
 ```bash

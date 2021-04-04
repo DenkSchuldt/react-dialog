@@ -11,6 +11,7 @@ const Button = ({ primary, onClick, text, disabled }) => {
       type='button'
       onClick={onClick}
       disabled={disabled}
+      style={{ cursor: disabled ? 'none' : 'pointer' }}
       className={`dnk-btn ${primary ? 'dnk-btn-primary' : ''}`}>
       { text }
     </button>

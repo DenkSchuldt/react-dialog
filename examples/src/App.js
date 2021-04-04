@@ -54,6 +54,7 @@ function App() {
             <i
               id='dnk-npm-icon'
               className="fas fa-copy"
+              style={{ cursor: 'pointer' }}
               onClick={() => {
                 navigator?.clipboard?.writeText('npm i @denkschuldt/react-dialog --save');
                 const elem = document.getElementById('dnk-npm');
