@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/DenkSchuldt/react-dialog/issues"
   },
-  "homepage": "https://github.com/DenkSchuldt/react-dialog",
+  "homepage": "https://denkschuldt.github.io/react-dialog",
   "babel": {
     "presets": [
       "@babel/preset-react",
