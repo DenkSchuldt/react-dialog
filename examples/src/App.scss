@@ -1,0 +1,269 @@
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes blink {
+  0%  { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.dnk-animate {
+  animation: blink 0.5s linear;
+}
+
+.app {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgb(229,115,115);
+  background: linear-gradient(45deg, rgba(229,115,115,1) 0%, rgba(130,233,222,1) 100%);
+
+  h1 {
+    color: #fff;
+    margin: 16px 0;
+    font-size: 32px;
+  }
+  h2 {
+    color: #fafafa;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    i {
+      cursor: pointer;
+    }
+  }
+
+  .app-button {
+    width: auto;
+    border: none;
+    display: flex;
+    outline: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+    padding: 12px 32px;
+    height: fit-content;
+    border-radius: 36px;
+    align-items: center;
+    background: #26a69a;
+    justify-content: center;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    &:hover {
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    }
+  }
+
+  .app-header {
+    width: 100%;
+    height: 50vh;
+    position: relative;
+    .app-header-content {
+      width: 90%;
+      height: 100%;
+      margin: auto;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      p {
+        color: #303030;
+      }
+      button {
+        margin-top: 32px;
+      }
+    }
+    .dnk-my-dialog {
+      position: absolute;
+      .dnk-dialog-content {
+        max-width: 340px;
+        transform: scale(1);
+        animation: pulse 1s infinite;
+      }
+    }
+  }
+
+  .app-body {
+    width: 60%;
+    margin: auto;
+    max-width: 720px;
+    article {
+      width: 100%;
+      display: flex;
+      padding: 20px 0;
+      flex-direction: column;
+      .app-installation-code {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        color: #303030;
+        font-size: 16px;
+        border-radius: 10px;
+        align-items: center;
+        box-sizing: border-box;
+        justify-content: space-between;
+        background: rgba(255,255,255,0.75) !important;
+        background-color: rgba(255,255,255,0.75) !important;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: 0 10px 20px rgba(255,255,255,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        i {
+          cursor: pointer;
+        }
+      }
+      span {
+        &:first-of-type {
+          border-radius: 10px !important;
+          background-color: rgba(255,255,255,0.75) !important;
+          span {
+            background-color: transparent !important;
+          }
+        }
+        code {
+          margin-left: -50px;
+
+        }
+      }
+      footer {
+        width: 100%;
+        display: flex;
+        padding: 24px 0;
+        justify-content: flex-end;
+      }
+      .app-body-table {
+        overflow: auto;
+        table {
+          color: #303030;
+          border-radius: 10px;
+          background-color: rgba(255,255,255,0.75) !important;
+          box-shadow: 0 10px 20px rgba(255,255,255,0.19), 0 6px 6px rgba(0,0,0,0.23);
+          tr {
+            border-top: 1px solid #fff;
+            background-color: rgba(255,255,255,0.75);
+            th, td {
+              padding: 8px;
+              color: #303030;
+            }
+            &:nth-child(even) {
+              background-color: #f6f8fa;
+            }
+          }
+          thead {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            tr {
+              border-top-left-radius: 10px;
+              border-top-right-radius: 10px;
+              th {
+                &:first-of-type {
+                  border-top-left-radius: 10px;
+                }
+                &:last-of-type {
+                  border-top-right-radius: 10px;
+                }
+              }
+            }
+          }
+          tbody {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            tr {
+              &:last-of-type {
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                td {
+                  &:first-of-type {
+                    border-bottom-left-radius: 10px;
+                  }
+                  &:last-of-type {
+                    border-bottom-right-radius: 10px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .dnk-playground-link {
+        color: #fff;
+        display: flex;
+        cursor: pointer;
+        margin-top: 40px;
+        font-weight: bold;
+        align-items: center;
+        text-decoration: none;
+        justify-content: center;
+        i {
+          margin-left: 8px;
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .app-footer {
+    color: #fff;
+    padding: 40px 0 80px 0;
+    text-align: center;
+    a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+
+  .my-custom-styles {
+    .dnk-dialog-content {
+      border-radius: 0;
+      background-color: #fff;
+      .dnk-dialog-close {
+        top: 0;
+        right: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: transparent;
+        &:hover {
+          box-shadow: none;
+        }
+      }
+      .dnk-dialog-body {
+        .dnk-dialog-body-buttons {
+          justify-content: center;
+          button {
+            width: 100%;
+            border-radius: 0;
+            &.dnk-btn-primary {
+              background-color: #4b830d;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .app {
+    .app-body {
+      width: 80%;
+    }
+  }
+}

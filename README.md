@@ -14,10 +14,8 @@ $ npm install --save @denkschuldt/react-dialog
 
 ## Basic usage
 
-See full DEMO at [@DenkSchuldt/react-dialog](https://dennyschuldt.com/react-dialog)
-
 <img
-  src="./@DenkSchuldt react-dialog.gif"
+  src="./demo.gif"
   alt="Preview"/>
 
 ```javascript
@@ -37,10 +35,12 @@ const App = () => {
       {
         isVisible &&
         <Dialog
-          title='This is the dialog title'
+          title='Dialog'
+          onCancelClick={() => {}}
+          onConfirmClick={() => {}}
           onCloseClick={() => setIsVisible(false)}>
           <span>
-            This is the dialog body.
+            This is the body
           </span>
         </Dialog>
       }
@@ -48,11 +48,12 @@ const App = () => {
   );
 }
 
-ReactDOM.render(<App/>, document.body);
+ReactDOM.render(<App/>, document.getElementById('root'));
 
 ```
+See more examples at [@DenkSchuldt/react-dialog](https://denkschuldt.github.io/react-dialog)
 
-## Properties
+## Props
 
 | Name              | Type     | Required           | Description                                           | Default |
 |-------------------|----------|--------------------|-------------------------------------------------------|---------|
