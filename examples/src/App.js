@@ -70,6 +70,138 @@ function App() {
           </code>
         </article>
         <article>
+          <h1>Props</h1>
+          <div className='app-body-table'>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th>Required</th>
+                  <th>Description</th>
+                  <th>Default</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>width</td>
+                  <td>Number</td>
+                  <td></td>
+                  <td>Dialog width</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>height</td>
+                  <td>Number</td>
+                  <td></td>
+                  <td>Dialog height</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>title</td>
+                  <td>String</td>
+                  <td></td>
+                  <td>Dialog title</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>draggable</td>
+                  <td>Boolean</td>
+                  <td></td>
+                  <td>Allows dialog drag</td>
+                  <td>true</td>
+                </tr>
+                <tr>
+                  <td>className</td>
+                  <td>String</td>
+                  <td></td>
+                  <td>Component class to override styles</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>slideIn</td>
+                  <td>String</td>
+                  <td></td>
+                  <td>Initial animation: top, bottom, left, right</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>cancelableOutside</td>
+                  <td>Boolean</td>
+                  <td></td>
+                  <td>Whether the dialogs closes by clicking outside or not</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>closeOnEscPress</td>
+                  <td>Boolean</td>
+                  <td></td>
+                  <td>Whether the dialogs closes by pressing escape</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>hideCloseButton</td>
+                  <td>Boolean</td>
+                  <td></td>
+                  <td>Hides the close button</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>onCloseClick</td>
+                  <td>function</td>
+                  <td style={{ textAlign: 'center' }}>
+                    <p>&#9989;</p>
+                  </td>
+                  <td>Close button click function</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>cancelText</td>
+                  <td>String</td>
+                  <td></td>
+                  <td>Negative button text</td>
+                  <td>'CANCEL'</td>
+                </tr>
+                <tr>
+                  <td>onCancelClick</td>
+                  <td>function</td>
+                  <td></td>
+                  <td>Negative button click function</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>cancelDisabled</td>
+                  <td>Boolean</td>
+                  <td></td>
+                  <td>Negative button disabled prop</td>
+                  <td>false</td>
+                </tr>
+                <tr>
+                  <td>confirmText</td>
+                  <td>String</td>
+                  <td></td>
+                  <td>Positive button text</td>
+                  <td>'OK'</td>
+                </tr>
+                <tr>
+                  <td>onConfirmClick</td>
+                  <td>function</td>
+                  <td></td>
+                  <td>Positive button click function</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>confirmDisabled</td>
+                  <td>Boolean</td>
+                  <td></td>
+                  <td>Positive button disabled prop</td>
+                  <td>false</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+        <article>
           <h1>Usage</h1>
           <h2>
             Basic
@@ -330,138 +462,6 @@ function App() {
             Visit the playground for more examples
             <i className="fas fa-external-link-square-alt"></i>
           </a>
-        </article>
-        <article>
-          <h1>Props</h1>
-          <div className='app-body-table'>
-            <table>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Type</th>
-                  <th>Required</th>
-                  <th>Description</th>
-                  <th>Default</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>width</td>
-                  <td>Number</td>
-                  <td></td>
-                  <td>Dialog width</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>height</td>
-                  <td>Number</td>
-                  <td></td>
-                  <td>Dialog height</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>title</td>
-                  <td>String</td>
-                  <td></td>
-                  <td>Dialog title</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>draggable</td>
-                  <td>Boolean</td>
-                  <td></td>
-                  <td>Allows dialog drag</td>
-                  <td>true</td>
-                </tr>
-                <tr>
-                  <td>className</td>
-                  <td>String</td>
-                  <td></td>
-                  <td>Component class to override styles</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>slideIn</td>
-                  <td>String</td>
-                  <td></td>
-                  <td>Initial animation: top, bottom, left, right</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>cancelableOutside</td>
-                  <td>Boolean</td>
-                  <td></td>
-                  <td>Whether the dialogs closes by clicking outside or not</td>
-                  <td>false</td>
-                </tr>
-                <tr>
-                  <td>closeOnEscPress</td>
-                  <td>Boolean</td>
-                  <td></td>
-                  <td>Whether the dialogs closes by pressing escape</td>
-                  <td>false</td>
-                </tr>
-                <tr>
-                  <td>hideCloseButton</td>
-                  <td>Boolean</td>
-                  <td></td>
-                  <td>Hides the close button</td>
-                  <td>false</td>
-                </tr>
-                <tr>
-                  <td>onCloseClick</td>
-                  <td>function</td>
-                  <td style={{ textAlign: 'center' }}>
-                    <p>&#9989;</p>
-                  </td>
-                  <td>Close button click function</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>cancelText</td>
-                  <td>String</td>
-                  <td></td>
-                  <td>Negative button text</td>
-                  <td>'CANCEL'</td>
-                </tr>
-                <tr>
-                  <td>onCancelClick</td>
-                  <td>function</td>
-                  <td></td>
-                  <td>Negative button click function</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>cancelDisabled</td>
-                  <td>Boolean</td>
-                  <td></td>
-                  <td>Negative button disabled prop</td>
-                  <td>false</td>
-                </tr>
-                <tr>
-                  <td>confirmText</td>
-                  <td>String</td>
-                  <td></td>
-                  <td>Positive button text</td>
-                  <td>'OK'</td>
-                </tr>
-                <tr>
-                  <td>onConfirmClick</td>
-                  <td>function</td>
-                  <td></td>
-                  <td>Positive button click function</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>confirmDisabled</td>
-                  <td>Boolean</td>
-                  <td></td>
-                  <td>Positive button disabled prop</td>
-                  <td>false</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </article>
         <article>
           <h1>License</h1>

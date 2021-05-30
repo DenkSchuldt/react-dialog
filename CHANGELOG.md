@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 The date format used is DD/MM/YYYY.
 
 
+## [1.0.4] - 30/05/2021
+### Fixed
+* Fixing draggable on mobile
+
 ## [1.0.3] - 04/04/2021
 ### Fixed
 * Removing overriding styles from body

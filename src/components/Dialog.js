@@ -52,7 +52,8 @@ const Dialog = (props) => {
       onClick={cancelableOutside ? handleCloseClick : undefined}>
       <div style={{ margin: 'auto' }}>
         <Draggable
-          disabled={!draggable}>
+          disabled={!draggable}
+          cancel='.dnk-dialog-close, .dnk-dialog-body'>
           <div
             style={
               ['top', 'bottom', 'left', 'right'].includes(slideIn) ?
