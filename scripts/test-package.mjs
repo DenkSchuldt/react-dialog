@@ -15,7 +15,10 @@ const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 const runNpm = (args, cwd = root) => execFileSync(npm, args, { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'inherit'] });
 
 try {
-  const [packed] = JSON.parse(runNpm(['pack', '--ignore-scripts', '--json', '--pack-destination', temporary]));
+  const packResult = JSON.parse(runNpm(['pack', '--ignore-scripts', '--json', '--pack-destination', temporary]));
+  // npm 11 returns an array; npm 12 keys results by package name.
+  const packed = Array.isArray(packResult) ? packResult[0] : packResult[manifest.name];
+  assert(packed?.filename, 'npm pack must return the library tarball');
   for (const file of ['dist/index.js', 'dist/index.cjs', 'dist/index.node.js', 'dist/index.d.ts', 'dist/index.d.cts']) {
     assert(packed.files.some(({ path }) => path === file), `Missing ${file} in tarball`);
   }
