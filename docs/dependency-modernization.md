@@ -1,4 +1,4 @@
-# Dependency modernization (unreleased)
+# Dependency modernization for 2.0.0 (unreleased)
 
 Versions were checked against the npm registry's stable `latest` tags on
 2026-10-11. Direct dependencies are exact-pinned and one npm v3 lockfile covers
@@ -77,8 +77,9 @@ manifest ranges rather than claimed installed versions.
 
 - React/React DOM 19.3.0 are used for development and demo. Consumer peers cover
   React 16.14, 17, 18 and 19; the lower bound moves from 16.8 to 16.14 for the
-  automatic JSX runtime. This boundary and new package exports require release
-  review before publishing; package version 1.0.4 has deliberately not changed.
+  automatic JSX runtime. This boundary and the new package exports are breaking
+  changes, so the prepared package is version 2.0.0 rather than a 1.x update.
+  Version 2.0.0 is not yet published; release approval remains separate.
 - The default import, props, default labels, CSS class names, injected styling,
   button callbacks and 90 ms close delay are retained. No CSS import is needed.
 - The library ships ESM, CJS, `.d.ts` and `.d.cts` declarations. Native Node ESM
@@ -87,6 +88,18 @@ manifest ranges rather than claimed installed versions.
 - Use the public package import. Undocumented deep imports are not exported.
 - The demo uses `createRoot` and StrictMode. It is a private npm workspace.
 - Development requires Node >=22.13 and npm >=11; `.nvmrc` selects Node 24 LTS.
+
+## Prepared release artifact
+
+The root package and lockfile identify `@denkschuldt/react-dialog@2.0.0`.
+The private demo workspace remains version 1.0.0. `npm pack` runs `prepack`,
+builds the library and creates `denkschuldt-react-dialog-2.0.0.tgz`; no registry
+write occurs. It includes ESM/CJS entry points, both declaration formats,
+package metadata, README and licenses.
+
+The artifact can be installed by local path before publishing. Publication of
+2.0.0, merging the PR, Git tags and any website deployment remain outside this
+preparation step. The changelog deliberately has no publication date yet.
 
 ## Verification
 

@@ -6,11 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 The date format used is DD/MM/YYYY.
 
 
-## [Unreleased]
+## [2.0.0] - Unreleased
+
+Prepared for review; not published to npm. The release date will be recorded
+when publication is approved.
+
+### Breaking changes
+* Require React/React DOM 16.14 or newer in the supported 16, 17, 18 and 19
+  release lines; React 16.8–16.13 no longer provide the required JSX runtime.
+* Define public package exports. Import from `@denkschuldt/react-dialog`;
+  undocumented deep paths are no longer available.
+
 ### Changed
 * Update library development, demo and Storybook to React/React DOM 19.3.0.
-* Support React 16.14 through 19 with an automatic JSX runtime; React 16.8–16.13
-  and undocumented deep package imports are no longer supported by this branch.
 * Replace Create React App, legacy Rollup/Babel/Jest and Node Sass with Vite,
   Vitest and Dart Sass; migrate Storybook to 10.6.1 with tracked configuration.
 * Use one npm workspace/lockfile; require Node.js 22.13+ and npm 11+ for development.

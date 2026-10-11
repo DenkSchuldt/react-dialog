@@ -1,6 +1,6 @@
 {
   "name": "@denkschuldt/react-dialog",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "private": false,
   "description": "A simple to use and customizable react dialog implementation.",
   "main": "./dist/index.cjs",
