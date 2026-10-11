@@ -1,7 +1,7 @@
 
 import PropTypes from 'prop-types';
 import Draggable from 'react-draggable';
-import React, { useRef, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 import Button from './Button';
 
@@ -10,41 +10,60 @@ import './Dialog.scss';
 import icClose from './../images/ic-close.svg';
 
 
-const Dialog = (props) => {
-  const {
-    width, height, title, onCloseClick, cancelableOutside, children,
-    onConfirmClick, onCancelClick, confirmText, cancelText, className,
-    draggable, cancelDisabled, confirmDisabled, slideIn, hideCloseButton,
-    closeOnEscPress
-  } = props;
-  const dialog = useRef();
-  const handleCloseClick = () => {
-    dialog.current.classList.add('dnk-dialog-hide-background');
-    setTimeout(() => {
-      onCloseClick();
-    }, 90);
-  };
-  const handleCloseOnEscPress = (e) => {
-    if(e.keyCode === 27) {
-      handleCloseClick();
-    }
-  }
+const Dialog = ({
+  width, height, title, onCloseClick, children, className, slideIn,
+  onConfirmClick, onCancelClick,
+  draggable = true,
+  cancelableOutside = true,
+  cancelText = 'CANCEL',
+  confirmText = 'OK',
+  cancelDisabled = false,
+  confirmDisabled = false,
+  hideCloseButton = false,
+  closeOnEscPress = false
+}) => {
+  const dialog = useRef(null);
+  const draggableNode = useRef(null);
+  const closeTimer = useRef(null);
+  const onClose = useRef(onCloseClick);
+
   useEffect(() => {
-    if (closeOnEscPress) {
-      document.addEventListener(
-        "keydown",
-        handleCloseOnEscPress,
-        false
-      );
-      return () => {
-        document.removeEventListener(
-          "keydown",
-          handleCloseOnEscPress,
-          false
-        );
-      }
-    }
+    onClose.current = onCloseClick;
+  }, [onCloseClick]);
+
+  useEffect(() => () => {
+    clearTimeout(closeTimer.current);
+    closeTimer.current = null;
   }, []);
+
+  const handleCloseClick = useCallback(() => {
+    if (closeTimer.current !== null || !dialog.current) {
+      return;
+    }
+
+    dialog.current.classList.add('dnk-dialog-hide-background');
+    closeTimer.current = setTimeout(() => {
+      closeTimer.current = null;
+      onClose.current();
+    }, 90);
+  }, []);
+
+  useEffect(() => {
+    if (!closeOnEscPress) {
+      return;
+    }
+
+    const handleCloseOnEscPress = (event) => {
+      if (event.key === 'Escape' || event.keyCode === 27) {
+        handleCloseClick();
+      }
+    };
+
+    document.addEventListener('keydown', handleCloseOnEscPress);
+    return () => {
+      document.removeEventListener('keydown', handleCloseOnEscPress);
+    };
+  }, [closeOnEscPress, handleCloseClick]);
   return (
     <div
       ref={dialog}
@@ -52,9 +71,11 @@ const Dialog = (props) => {
       onClick={cancelableOutside ? handleCloseClick : undefined}>
       <div style={{ margin: 'auto' }}>
         <Draggable
+          nodeRef={draggableNode}
           disabled={!draggable}
           cancel='.dnk-dialog-close, .dnk-dialog-body'>
           <div
+            ref={draggableNode}
             style={
               ['top', 'bottom', 'left', 'right'].includes(slideIn) ?
               { animationName: `slide-in-from-${slideIn}` } :
@@ -88,6 +109,7 @@ const Dialog = (props) => {
                 !hideCloseButton &&
                 <button
                   type='button'
+                  aria-label='Close dialog'
                   onClick={handleCloseClick}
                   style={{ cursor: 'pointer' }}
                   className='dnk-dialog-close'>
@@ -139,7 +161,7 @@ Dialog.propTypes = {
   title: PropTypes.string,
   draggable: PropTypes.bool,
   className: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.node,
   onCancelClick: PropTypes.func,
   cancelText: PropTypes.string,
   onConfirmClick: PropTypes.func,
@@ -151,17 +173,6 @@ Dialog.propTypes = {
   hideCloseButton: PropTypes.bool,
   closeOnEscPress: PropTypes.bool,
   slideIn: PropTypes.oneOf(['top', 'bottom', 'left', 'right'])
-};
-
-Dialog.defaultProps = {
-  draggable: true,
-  cancelText: 'CANCEL',
-  cancelDisabled: false,
-  confirmText: 'OK',
-  confirmDisabled: false,
-  cancelableOutside: true,
-  hideCloseButton: false,
-  closeOnEscPress: false
 };
 
 export default Dialog;

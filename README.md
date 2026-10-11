@@ -4,13 +4,18 @@
 > A simple to use and customizable react dialog implementation.
 
 ## Installation
+
+Version **2.0.0 is prepared but not yet published**. npm currently serves 1.0.4;
+installing `@latest` will not include this branch's React 19 support. After the
+2.0.0 release is approved and published:
+
 ```bash
-# NPM
-$ npm install --save @denkschuldt/react-dialog
+npm install @denkschuldt/react-dialog@^2.0.0
 ```
 |Version     | Compatibility|
 |------------|--------------|
-|1.x         | React ˆ16.8+ |
+|Published 1.x | React 16.x, >=16.8 (declared peer: ^16.8.0) |
+|2.0.0 (prepared; unpublished) | React 16.14, 17, 18 and 19 |
 
 ## Basic usage
 
@@ -19,7 +24,7 @@ $ npm install --save @denkschuldt/react-dialog
   alt="Preview"/>
 
 ```javascript
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import React, { useState } from 'react';
 import Dialog from '@denkschuldt/react-dialog';
 
@@ -48,7 +53,7 @@ const App = () => {
   );
 }
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+createRoot(document.getElementById('root')).render(<App/>);
 
 ```
 See more examples at [@DenkSchuldt/react-dialog](https://denkschuldt.github.io/react-dialog)
@@ -63,7 +68,7 @@ See more examples at [@DenkSchuldt/react-dialog](https://denkschuldt.github.io/r
 | draggable         | Boolean  |                    | Allows dialog drag                                    | true    |
 | className         | String   |                    | Component class to override styles                    |         |
 | slideIn           | String   |                    | Initial animation: top, bottom, left, right           |         |
-| cancelableOutside | Boolean  |                    | Whether the dialogs closes by clicking outside or not | false   |
+| cancelableOutside | Boolean  |                    | Whether the dialogs closes by clicking outside or not | true    |
 | closeOnEscPress   | Boolean  |                    | Whether the dialogs closes by pressing escape         | false   |
 | hideCloseButton   | Boolean  |                    | Hides the close button                                | false   |
 | onCloseClick      | function | :white_check_mark: | Close button click function                           |         |
@@ -98,6 +103,73 @@ Use the className prop to override dialogs classes:
   }
 }
 ```
+
+## Development
+
+Use Node.js 22.13+ (Node 24 LTS recommended) and npm 11+. The root npm workspace
+includes the demo; a single committed lockfile covers both packages.
+
+```sh
+npm ci
+npm run dev                 # Vite demo at /react-dialog/
+npm run storybook           # Component playground on port 6006
+npm run check               # Lint, declaration types, unit tests and all builds
+npx playwright install chromium
+npm run test:e2e            # Production desktop/mobile browser regression tests
+npm run test:package -- 16.14.0 17.0.2 18.3.1
+```
+
+`npm run build` writes the library to `dist`, `npm run build:demo` writes the
+website to `examples/dist`, and `npm run build-storybook` writes the playground
+to `storybook-static`. The demo resolves this checkout's source, rather than an
+older npm release. CI checks Node 22 and 24 and never publishes or deploys.
+
+### Migrating to 2.0.0 (unreleased)
+
+- Development/demo React and React DOM are 19.3.0. The library supports React
+  16.14 through 19; React 16.8–16.13 consumers must update for the automatic JSX
+  runtime. The `createRoot` example above requires React 18 or newer.
+- The public default import and dialog props remain unchanged. ESM and CommonJS
+  entry points and TypeScript declarations are included. Import from
+  `@denkschuldt/react-dialog`; internal/deep file imports are not public exports.
+- CSS still loads automatically when the library is imported in the browser.
+  No separate stylesheet import or Bootstrap is required. Both entry points are
+  also safe to import during server rendering.
+- Function defaults now use JavaScript parameters, and dragging supplies a DOM
+  ref instead of React's removed `findDOMNode`. PropTypes remain for older React;
+  React 19 consumers can use the bundled TypeScript declarations for checking.
+- Close callbacks retain their 90 ms delay. Repeated clicks during that delay
+  coalesce, pending callbacks are canceled on unmount, and Escape honors updated
+  props. Remove the dialog from your close callback as in the examples above.
+- Create React App, Node Sass, the legacy Rollup/Babel/Jest stack and obsolete
+  Storybook addons have been replaced by Vite, Dart Sass, Vitest and Storybook 10.
+- The old `gh-pages` deploy helper was removed because its latest release has
+  an unpatched transitive security advisory. Build outputs remain ready for a
+  separately managed deployment; no deployment command runs as part of checks.
+
+See [dependency modernization details](docs/dependency-modernization.md) for
+exact dependency changes, replacements and verification commands. Package
+version 2.0.0 is prepared for review; merging, tagging and npm publication require
+a separate release approval.
+
+### Try the prepared package locally
+
+On the updated branch, `npm pack` runs the build automatically through
+`prepack` and creates `denkschuldt-react-dialog-2.0.0.tgz`:
+
+```sh
+npm ci
+npm run check
+npm pack
+```
+
+Then install that file from your application's directory:
+
+```sh
+npm install /path/to/react-dialog/denkschuldt-react-dialog-2.0.0.tgz
+```
+
+This tests the prepared 2.0.0 package without publishing it to npm.
 
 ## Contributing
 * Fork the project

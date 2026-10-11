@@ -1,11 +1,10 @@
 
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import './Button.scss';
 
 
-const Button = ({ primary, onClick, text, disabled }) => {
+const Button = ({ primary, onClick, text, disabled = false }) => {
   return (
     <button
       type='button'
@@ -23,10 +22,6 @@ Button.propTypes = {
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   text: PropTypes.string.isRequired
-};
-
-Button.defaultProps = {
-  disabled: false
 };
 
 export default Button;
