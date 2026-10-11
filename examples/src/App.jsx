@@ -1,15 +1,15 @@
-
 import { useState } from 'react';
 import Dialog from '@denkschuldt/react-dialog';
-import { CodeBlock, github } from "react-code-blocks";
+import CodeBlock from './CodeBlock.jsx';
 
-import GithubCorner from './GithubCorner';
+import GithubCorner from './GithubCorner.jsx';
 
 import './App.scss';
 
 
 function App() {
   const [ customDialog, setCustomDialog ] = useState();
+  const [ copyStatus, setCopyStatus ] = useState('');
   const [ isDialogVisible, setIsDialogVisible ] = useState(true);
   const [ example1, toggleExample1 ] = useState(true);
   const [ example2, toggleExample2 ] = useState(true);
@@ -47,27 +47,27 @@ function App() {
       <section className='app-body'>
         <article>
           <h1>Installation</h1>
-          <code className='app-installation-code'>
-            <div id='dnk-npm'>
-              $ npm i @denkschuldt/react-dialog --save
-            </div>
-            <i
-              id='dnk-npm-icon'
-              className="fas fa-copy"
-              style={{ cursor: 'pointer' }}
-              onClick={() => {
-                navigator?.clipboard?.writeText('npm i @denkschuldt/react-dialog --save');
-                const elem = document.getElementById('dnk-npm');
-                const icon = document.getElementById('dnk-npm-icon');
-                elem.classList.add('dnk-animate');
-                icon.classList.add('dnk-animate');
-                elem.addEventListener('animationend', () => {
-                  elem.classList.remove('dnk-animate');
-                  icon.classList.remove('dnk-animate');
-                });
+          <div className='app-installation-code'>
+            <code>npm install @denkschuldt/react-dialog</code>
+            <button
+              type='button'
+              className='app-icon-button'
+              aria-label='Copy installation command'
+              onClick={async () => {
+                try {
+                  await navigator.clipboard.writeText('npm install @denkschuldt/react-dialog');
+                  setCopyStatus('Installation command copied.');
+                } catch {
+                  setCopyStatus('Could not copy. Select and copy the command above.');
+                }
               }}>
-            </i>
-          </code>
+              <svg width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2' aria-hidden='true'>
+                <rect x='8' y='8' width='12' height='12' rx='2' />
+                <path d='M16 8V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h4' />
+              </svg>
+            </button>
+          </div>
+          <p className='app-copy-status' role='status'>{copyStatus}</p>
         </article>
         <article>
           <h1>Props</h1>
@@ -129,14 +129,14 @@ function App() {
                   <td>cancelableOutside</td>
                   <td>Boolean</td>
                   <td></td>
-                  <td>Whether the dialogs closes by clicking outside or not</td>
-                  <td>false</td>
+                  <td>Whether the dialog closes by clicking outside or not</td>
+                  <td>true</td>
                 </tr>
                 <tr>
                   <td>closeOnEscPress</td>
                   <td>Boolean</td>
                   <td></td>
-                  <td>Whether the dialogs closes by pressing escape</td>
+                  <td>Whether the dialog closes by pressing escape</td>
                   <td>false</td>
                 </tr>
                 <tr>
@@ -205,25 +205,23 @@ function App() {
           <h1>Usage</h1>
           <h2>
             Basic
-            {
-              example1 ?
-              <i
-                className="fas fa-minus-circle"
-                onClick={() => toggleExample1(false)}>
-              </i> :
-              <i
-                className="fas fa-plus-circle"
-                onClick={() => toggleExample1(true)}>
-              </i>
-            }
+            <button
+              type='button'
+              className='app-icon-button app-toggle-button'
+              aria-label={`${example1 ? 'Collapse' : 'Expand'} basic example`}
+              aria-expanded={example1}
+              aria-controls='example-1'
+              onClick={() => toggleExample1(visible => !visible)}>
+              <span aria-hidden='true'>{example1 ? '−' : '+'}</span>
+            </button>
           </h2>
           {
             example1 &&
-            <>
+            <div id='example-1' className='app-example'>
               <CodeBlock
                 text={`
-                  import ReactDOM from 'react-dom';
-                  import React, { useState } from 'react';
+                  import { createRoot } from 'react-dom/client';
+                  import { useState } from 'react';
                   import Dialog from '@denkschuldt/react-dialog';
 
                   const App = () => {
@@ -250,11 +248,8 @@ function App() {
                     );
                   }
 
-                  ReactDOM.render(<App/>, document.getElementById('root'));
-                `}
-                language={'javascript'}
-                showLineNumbers={false}
-                theme={github}/>
+                  createRoot(document.getElementById('root')).render(<App />);
+                `}/>
               <footer>
                 <button
                   type='button'
@@ -269,31 +264,29 @@ function App() {
                   Show dialog
                 </button>
               </footer>
-            </>
+            </div>
           }
         </article>
         <article>
           <h2>
             With buttons
-            {
-              example2 ?
-              <i
-                className="fas fa-minus-circle"
-                onClick={() => toggleExample2(false)}>
-              </i> :
-              <i
-                className="fas fa-plus-circle"
-                onClick={() => toggleExample2(true)}>
-              </i>
-            }
+            <button
+              type='button'
+              className='app-icon-button app-toggle-button'
+              aria-label={`${example2 ? 'Collapse' : 'Expand'} with buttons example`}
+              aria-expanded={example2}
+              aria-controls='example-2'
+              onClick={() => toggleExample2(visible => !visible)}>
+              <span aria-hidden='true'>{example2 ? '−' : '+'}</span>
+            </button>
           </h2>
           {
             example2 &&
-            <>
+            <div id='example-2' className='app-example'>
               <CodeBlock
                 text={`
-                  import ReactDOM from 'react-dom';
-                  import React, { useState } from 'react';
+                  import { createRoot } from 'react-dom/client';
+                  import { useState } from 'react';
                   import Dialog from '@denkschuldt/react-dialog';
 
                   const App = () => {
@@ -323,11 +316,8 @@ function App() {
                     );
                   }
 
-                  ReactDOM.render(<App/>, document.getElementById('root'));
-                `}
-                language={'javascript'}
-                showLineNumbers={false}
-                theme={github}/>
+                  createRoot(document.getElementById('root')).render(<App />);
+                `}/>
               <footer>
                 <button
                   type='button'
@@ -345,32 +335,29 @@ function App() {
                   Show dialog
                 </button>
               </footer>
-            </>
+            </div>
           }
         </article>
         <article>
           <h2>
             Overriding styles
-            {
-              example3 ?
-              <i
-                className="fas fa-minus-circle"
-                onClick={() => toggleExample3(false)}>
-              </i> :
-              <i
-                className="fas fa-plus-circle"
-                onClick={() => toggleExample3(true)}>
-              </i>
-            }
+            <button
+              type='button'
+              className='app-icon-button app-toggle-button'
+              aria-label={`${example3 ? 'Collapse' : 'Expand'} overriding styles example`}
+              aria-expanded={example3}
+              aria-controls='example-3'
+              onClick={() => toggleExample3(visible => !visible)}>
+              <span aria-hidden='true'>{example3 ? '−' : '+'}</span>
+            </button>
           </h2>
           {
             example3 &&
-            <>
+            <div id='example-3' className='app-example'>
               <CodeBlock
-              className='hi'
               text={`
-                import ReactDOM from 'react-dom';
-                import React, { useState } from 'react';
+                import { createRoot } from 'react-dom/client';
+                import { useState } from 'react';
                 import Dialog from '@denkschuldt/react-dialog';
 
                 const App = () => {
@@ -389,7 +376,7 @@ function App() {
                           title='Overriding styles'
                           className='my-custom-styles'
                           onCancelClick={() => setIsVisible(false)}
-                          onConfirmClick={() => {...}}
+                          onConfirmClick={() => setIsVisible(false)}
                           onCloseClick={() => setIsVisible(false)}>
                           <span>
                             You can change the styles by overriding the dialog's classes
@@ -400,7 +387,7 @@ function App() {
                   );
                 }
 
-                ReactDOM.render(<App/>, document.getElementById('root'));
+                createRoot(document.getElementById('root')).render(<App />);
 
                 /*
                   styles.scss
@@ -430,10 +417,7 @@ function App() {
                     }
                   }
                 */
-              `}
-              language={'javascript'}
-              showLineNumbers={false}
-              theme={github}/>
+              `}/>
               <footer>
                 <button
                   type='button'
@@ -452,7 +436,7 @@ function App() {
                   Show dialog
                 </button>
               </footer>
-            </>
+            </div>
           }
           <a
             target='_blank'
@@ -460,7 +444,7 @@ function App() {
             className='dnk-playground-link'
             href='https://denkschuldt.github.io/react-dialog/storybook'>
             Visit the playground for more examples
-            <i className="fas fa-external-link-square-alt"></i>
+            <span className='app-external-icon' aria-hidden='true'>↗</span>
           </a>
         </article>
         <article>

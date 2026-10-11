@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# React dialog examples
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Interactive demos and usage documentation for `@denkschuldt/react-dialog`, built with React and Vite. The demo uses the library source from this repository, so local component changes are reflected immediately. Styles are standalone SCSS; Bootstrap is not required.
 
-## Available Scripts
+## Get started
 
-In the project directory, you can run:
+Use Node.js 22.13 or newer and npm 11 or newer. Install dependencies once from the repository root using the shared workspace lockfile:
 
-### `yarn start`
+```sh
+npm ci
+npm run dev
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open the local URL printed by Vite, normally <http://localhost:5173/react-dialog/>. The page updates automatically when source files change.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Test and build
 
-### `yarn test`
+Run these commands from the repository root:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+npm test
+npm run build:demo
+```
 
-### `yarn build`
+The Vitest suite covers the library and demo, including repeated open/close cycles, cancel/confirm actions, code-example toggles, and clipboard feedback. The production demo is generated in `examples/dist` with the `/react-dialog/` base path used by GitHub Pages.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Preview the production build locally:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```sh
+npm run preview --workspace examples
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Storybook
 
-### `yarn eject`
+```sh
+npm run storybook
+npm run build-storybook
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Storybook runs on port 6006. Its static output is written to `storybook-static` at the repository root. Component stories are in `src/components/Dialog.stories.jsx`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Publishing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The build outputs (`examples/dist` and `storybook-static`) are ready for a separate manual publishing workflow. Builds, tests, and CI do not publish or deploy anything. Publish only after the destination and deployment have been explicitly approved.
