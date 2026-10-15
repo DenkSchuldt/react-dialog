@@ -5,9 +5,8 @@
 
 ## Installation
 
-Version **2.0.0 is prepared but not yet published**. npm currently serves 1.0.4;
-installing `@latest` will not include this branch's React 19 support. After the
-2.0.0 release is approved and published:
+Version **2.0.0 is available on npm** with React 16.14, 17, 18 and 19 support.
+View the package on [npm](https://www.npmjs.com/package/@denkschuldt/react-dialog).
 
 ```bash
 npm install @denkschuldt/react-dialog@^2.0.0
@@ -15,7 +14,7 @@ npm install @denkschuldt/react-dialog@^2.0.0
 |Version     | Compatibility|
 |------------|--------------|
 |Published 1.x | React 16.x, >=16.8 (declared peer: ^16.8.0) |
-|2.0.0 (prepared; unpublished) | React 16.14, 17, 18 and 19 |
+|2.0.0 | React 16.14, 17, 18 and 19 |
 
 ## Basic usage
 
@@ -124,7 +123,7 @@ website to `examples/dist`, and `npm run build-storybook` writes the playground
 to `storybook-static`. The demo resolves this checkout's source, rather than an
 older npm release. CI checks Node 22 and 24 and never publishes or deploys.
 
-### Migrating to 2.0.0 (unreleased)
+### Migrating to 2.0.0
 
 - Development/demo React and React DOM are 19.3.0. The library supports React
   16.14 through 19; React 16.8–16.13 consumers must update for the automatic JSX
@@ -148,13 +147,12 @@ older npm release. CI checks Node 22 and 24 and never publishes or deploys.
   separately managed deployment; no deployment command runs as part of checks.
 
 See [dependency modernization details](docs/dependency-modernization.md) for
-exact dependency changes, replacements and verification commands. Package
-version 2.0.0 is prepared for review; merging, tagging and npm publication require
-a separate release approval.
+exact dependency changes, replacements and verification commands, and the
+[v2.0.0 release notes](https://github.com/DenkSchuldt/react-dialog/releases/tag/v2.0.0).
 
-### Try the prepared package locally
+### Try the package locally
 
-On the updated branch, `npm pack` runs the build automatically through
+From a local checkout, `npm pack` runs the build automatically through
 `prepack` and creates `denkschuldt-react-dialog-2.0.0.tgz`:
 
 ```sh
@@ -169,7 +167,7 @@ Then install that file from your application's directory:
 npm install /path/to/react-dialog/denkschuldt-react-dialog-2.0.0.tgz
 ```
 
-This tests the prepared 2.0.0 package without publishing it to npm.
+This tests the local package without publishing it to npm.
 
 ## Contributing
 * Fork the project
