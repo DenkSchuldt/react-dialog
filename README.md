@@ -5,7 +5,7 @@
 
 ## Installation
 
-Version **2.0.0 is available on npm** with React 16.14, 17, 18 and 19 support.
+**Version 2.x is available on npm** with React 16.14, 17, 18 and 19 support.
 View the package on [npm](https://www.npmjs.com/package/@denkschuldt/react-dialog).
 
 ```bash
@@ -14,7 +14,7 @@ npm install @denkschuldt/react-dialog@^2.0.0
 |Version     | Compatibility|
 |------------|--------------|
 |1.x (legacy) | React 16.x, >=16.8 (declared peer: ^16.8.0) |
-|2.0.0 (current) | React 16.14, 17, 18 and 19 |
+|2.x (current) | React 16.14, 17, 18 and 19 |
 
 ## Basic usage
 
@@ -153,7 +153,7 @@ exact dependency changes, replacements and verification commands, and the
 ### Try the package locally
 
 From a local checkout, `npm pack` runs the build automatically through
-`prepack` and creates `denkschuldt-react-dialog-2.0.0.tgz`:
+`prepack` and creates `denkschuldt-react-dialog-2.0.1.tgz`:
 
 ```sh
 npm ci
@@ -164,7 +164,7 @@ npm pack
 Then install that file from your application's directory:
 
 ```sh
-npm install /path/to/react-dialog/denkschuldt-react-dialog-2.0.0.tgz
+npm install /path/to/react-dialog/denkschuldt-react-dialog-2.0.1.tgz
 ```
 
 This tests the local package without publishing it to npm.

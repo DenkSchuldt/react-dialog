@@ -6,10 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 The date format used is DD/MM/YYYY.
 
 
-## [2.0.0] - Unreleased
+## [2.0.1] - Unreleased
 
-Prepared for review; not published to npm. The release date will be recorded
-when publication is approved.
+### Fixed
+* Refresh the npm README on publication with the correct 2.x release status,
+  an npm package link, and current versus legacy React compatibility labels.
+* Documentation-only patch; runtime code and dependencies are unchanged.
+
+## [2.0.0] - 11/10/2026
 
 ### Breaking changes
 * Require React/React DOM 16.14 or newer in the supported 16, 17, 18 and 19
