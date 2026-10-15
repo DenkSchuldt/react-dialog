@@ -13,8 +13,8 @@ npm install @denkschuldt/react-dialog@^2.0.0
 ```
 |Version     | Compatibility|
 |------------|--------------|
-|Published 1.x | React 16.x, >=16.8 (declared peer: ^16.8.0) |
-|2.0.0 | React 16.14, 17, 18 and 19 |
+|1.x (legacy) | React 16.x, >=16.8 (declared peer: ^16.8.0) |
+|2.0.0 (current) | React 16.14, 17, 18 and 19 |
 
 ## Basic usage
 
